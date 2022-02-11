@@ -1,0 +1,23 @@
+Comment afficher les images des Django et configuration du static file
+
+
+1--Code a mettre dans le fichier settings.py
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+
+MEDIA_URL = 'image/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'image/')
+
+
+2--dans le fichier urls.py 
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT)
+
+
+3--Dans le urls.py
+{% load  static %}
+
